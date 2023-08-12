@@ -25,6 +25,9 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		if(prefs.muted & MUTE_OOC)
 			to_chat(src, span_danger("You cannot use OOC (muted)."))
 			return
+		if(!SSdiscord.safety_check(src))
+			to_chat(src, SSdiscord.safety_failure_message())
+			return
 	if(is_banned_from(ckey, "OOC"))
 		to_chat(src, span_danger("You have been banned from OOC."))
 		return

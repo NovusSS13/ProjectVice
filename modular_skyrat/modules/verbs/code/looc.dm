@@ -39,8 +39,8 @@
 		if(prefs.muted & MUTE_LOOC)
 			to_chat(src, span_danger("You cannot use LOOC (muted)."))
 			return
-		if(is_banned_from(ckey, BAN_LOOC))
-			to_chat(src, span_warning("You are LOOC banned!"))
+		if(!SSdiscord.safety_check(src))
+			to_chat(src, SSdiscord.safety_failure_message())
 			return
 		if(mob.stat)
 			to_chat(src, span_danger("You cannot use LOOC while unconscious or dead."))
@@ -48,6 +48,9 @@
 		if(istype(mob, /mob/dead))
 			to_chat(src, span_danger("You cannot use LOOC while ghosting."))
 			return
+	if(is_banned_from(ckey, BAN_LOOC))
+		to_chat(src, span_warning("You are LOOC banned!"))
+		return
 
 	msg = emoji_parse(msg)
 

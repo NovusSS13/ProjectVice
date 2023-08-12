@@ -12,6 +12,10 @@
 	if(client.interviewee)
 		return FALSE
 
+	if(!SSdiscord.safety_check(src))
+		to_chat(src, SSdiscord.safety_failure_message())
+		return FALSE
+
 	if(href_list["observe"])
 		play_lobby_button_sound()
 		make_me_an_observer()
