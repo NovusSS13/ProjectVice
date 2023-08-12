@@ -328,8 +328,6 @@ SUBSYSTEM_DEF(discord)
  * AKA, they failed discord verification.
  */
 /datum/controller/subsystem/discord/proc/safety_failure_message()
-	if(!player.client)
-		return FALSE
 	var/fail_message = CONFIG_GET(string/need_discord_failure_message)
 	if(!fail_message)
 		fail_message = "This action cannot be performed as you have not been verified on our Discord server."
