@@ -299,3 +299,41 @@ SUBSYSTEM_DEF(discord)
 		return discord_mention_extraction_regex.group[1]
 	return null
 
+/**
+ * Check if an account is linked with Discord
+ *
+ * This will look for a valid discord link datum for the mob's ckey.
+ * Defaults to TRUE if the server isn't configured for discord verification.
+ *
+ * Arguments:
+ * * player: the mob (hopefully with a client) to check
+ *
+ * Returns TRUE or FALSE
+ **/
+/datum/controller/subsystem/discord/proc/safety_check(mob/player)
+	if(!SSdbcore.IsConnected() || !CONFIG_GET(string/discordbotcommandprefix) || !CONFIG_GET(flag/need_discord_to_join))
+		return TRUE //this proc doesn't make sense without these configs
+
+	if(!player.client)
+		return FALSE //i will fucking kill you if you call this proc on a /mob with no client, this should not happen boy
+	else if(player.client.holder)
+		return TRUE //staff are able to bypass this for convenience
+
+	if(!lookup_id(player.client.ckey))
+		return FALSE
+	return TRUE
+
+/**
+ * Returns a standard failure message when proc/safety_check() returns FALSE
+ * AKA, they failed discord verification.
+ */
+/datum/controller/subsystem/discord/proc/safety_failure_message()
+	if(!player.client)
+		return FALSE
+	var/fail_message = CONFIG_GET(string/need_discord_failure_message)
+	if(!fail_message)
+		fail_message = "This action cannot be performed as you have not been verified on our Discord server."
+	var/discord_link = CONFIG_GET(string/discord_link)
+	if(discord_link)
+		fail_message += "\n\n<a href=\"[discord_link]\">Click here to join the server!</a>"
+	return span_danger(examine_block(fail_message))
