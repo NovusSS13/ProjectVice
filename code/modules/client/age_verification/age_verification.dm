@@ -122,7 +122,7 @@
 		"round_id" = GLOB.round_id,
 		// Client ban info
 		"role" = "Server",
-		"global_ban" = global_ban, // SKYRAT EDIT CHANGE - MULTISERVER
+		"global_ban" = TRUE, // SKYRAT EDIT CHANGE - MULTISERVER
 		"expiration_time" = -1,
 		"applies_to_admins" = FALSE,
 		"reason" = "SYSTEM BAN - Input date result during age verification was under 18 years of age. Contact administration for verification.",
