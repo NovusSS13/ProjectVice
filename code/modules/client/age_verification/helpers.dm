@@ -3,6 +3,7 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	if(!SSdbcore.IsConnected() || !CONFIG_GET(flag/automated_age_verification) || holder)
 		return TRUE
+	set_db_player_flags()
 	return (prefs?.db_flags & DB_FLAG_AGE_VETTED)
 
 /// Initiates the automated age verification process
