@@ -25,7 +25,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		if(prefs.muted & MUTE_OOC)
 			to_chat(src, span_danger("You cannot use OOC (muted)."))
 			return
-		if(!client.passed_age_check())
+		if(!passed_age_check())
 			to_chat(src, span_danger(examine_block("You must perform the automated age verification gate.")))
 			return FALSE
 		if(!SSdiscord.safety_check(src))

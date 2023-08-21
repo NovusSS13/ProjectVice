@@ -39,7 +39,7 @@
 		if(prefs.muted & MUTE_LOOC)
 			to_chat(src, span_danger("You cannot use LOOC (muted)."))
 			return
-		if(!client.passed_age_check())
+		if(!passed_age_check())
 			to_chat(src, span_danger(examine_block("You must perform the automated age verification gate.")))
 			return FALSE
 		if(!SSdiscord.safety_check(src))
