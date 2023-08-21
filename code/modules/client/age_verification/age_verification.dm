@@ -137,7 +137,6 @@
 	owner.add_system_note("Automated-Age-Gate", "Failed automated age gate process.")
 	if(!SSdbcore.MassInsert(format_table_name("ban"), sql_ban, warn = TRUE, special_columns = special_columns))
 		// this is the part where you should panic.
-		qdel(query_add_ban)
 		message_admins("WARNING! Failed to ban [owner.ckey] for failing the automated age gate. (Month: [month] Year: [year])")
 		send2adminchat("WARNING! Failed to ban [owner.ckey] for failing the automated age gate. (Month: [month] Year: [year])")
 		qdel(owner)
