@@ -12,6 +12,10 @@
 	if(client.interviewee)
 		return FALSE
 
+	if(!client.passed_age_check())
+		to_chat(src, span_danger(examine_block("You must perform the automated age verification gate.")))
+		return FALSE
+
 	if(!SSdiscord.safety_check(src))
 		to_chat(src, SSdiscord.safety_failure_message())
 		return FALSE

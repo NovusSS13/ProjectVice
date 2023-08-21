@@ -20,6 +20,9 @@
 		var/living_minutes = client.get_exp_living(TRUE)
 		if (required_living_minutes >= living_minutes)
 			client.interviewee = TRUE
+	// Perform automated age verification if necessary
+	if(!client.passed_age_check())
+		client.perform_age_check()
 
 	. = ..()
 	if(!. || !client)

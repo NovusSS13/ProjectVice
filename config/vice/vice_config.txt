@@ -1,8 +1,11 @@
+## Automated age verification, comment this out to not ask new users for their DoB
+# AGE_VERIFICATION
+
 ## Uncomment to make players need to link their discord accounts to ckeys in order to join the game_mode ##
 ## The discord verification system makes use of https://github.com/optimumtact/orangescogs ##
-## Needs a working database with the station's current schema ##
+## Needs a working database with the station's current schema
 # NEED_DISCORD_TO_JOIN
 
 ## In case NEED_DISCORD_TO_JOIN is enabled, this is the message shown
-## just before the discord link!
+## just before the discord link (if that is set up properly)!
 # NEED_DISCORD_FAILURE_MESSAGE This action cannot be performed as you have not been verified on our Discord server, which has been enabled due to safety concerns.
