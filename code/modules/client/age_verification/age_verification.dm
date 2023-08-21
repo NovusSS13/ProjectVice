@@ -116,11 +116,13 @@
 	)
 	var/list/sql_ban = list(list(
 		// Server info
+		"server_name" = CONFIG_GET(string/serversqlname),// SKYRAT EDIT CHANGE - MULTISERVER
 		"server_ip" = world.internet_address || 0,
 		"server_port" = world.port,
 		"round_id" = GLOB.round_id,
 		// Client ban info
 		"role" = "Server",
+		"global_ban" = global_ban, // SKYRAT EDIT CHANGE - MULTISERVER
 		"expiration_time" = -1,
 		"applies_to_admins" = FALSE,
 		"reason" = "SYSTEM BAN - Input date result during age verification was under 18 years of age. Contact administration for verification.",
