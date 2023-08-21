@@ -35,7 +35,6 @@
 /datum/age_verification/ui_close(mob/user)
 	. = ..()
 	if(owner && kick_unruly_owner)
-		to_chat(owner, span_danger("You have been kicked from the game for refusing to comply with age verification."))
 		QDEL_NULL(owner)
 	qdel(src)
 
@@ -108,34 +107,36 @@
 	return age_gate_result
 
 /datum/age_verification/proc/minor_detected(month, year)
-	var/datum/db_query/query_add_ban = SSdbcore.NewQuery({"
-		INSERT INTO [format_table_name("ban")]
-		(bantime, server_ip, server_port , round_id, bantype, reason, job, duration, expiration_time, ckey, computerid, ip, a_ckey, a_computerid, a_ip, who, adminwho)
-		VALUES (Now(), INET_ATON(:server_ip), :server_port, :round_id, :bantype_str, :reason, :role, :duration, Now() + INTERVAL :duration MINUTE, :ckey, :computerid, INET_ATON(:ip), :a_ckey, :a_computerid, INET_ATON(:a_ip), :who, :adminwho)"},
-		list(
-			// Server info
-			"server_ip" = world.internet_address || 0,
-			"server_port" = world.port,
-			"round_id" = GLOB.round_id,
-			// Client ban info
-			"bantype_str" = "ADMIN_PERMABAN",
-			"reason" = "SYSTEM BAN - Inputted date during join verification was under 18 years of age. Contact administration on discord for verification.",
-			"role" = null,
-			"duration" = -1,
-			"ckey" = owner.ckey,
-			"ip" = owner.address || null,
-			"computerid" = owner.computer_id || null,
-			// Admin banning info
-			"a_ckey" = "SYSTEM (Automated-Age-Gate)", // the server
-			"a_ip" = null, //key_name
-			"a_computerid" = "0",
-			"who" = GLOB.clients.Join(", "),
-			"adminwho" = GLOB.admins.Join(", "), //doesnt include stealthmins but whatever
-		))
+	var/special_columns = list(
+		"bantime" = "NOW()",
+		"server_ip" = "INET_ATON(?)",
+		"ip" = "INET_ATON(?)",
+		"a_ip" = "INET_ATON(?)",
+		"expiration_time" = "IF(? IS NULL, NULL, NOW() + INTERVAL ? MINUTE)"
+	)
+	var/list/sql_ban = list(list(
+		// Server info
+		"server_ip" = world.internet_address || 0,
+		"server_port" = world.port,
+		"round_id" = GLOB.round_id,
+		// Client ban info
+		"role" = "Server",
+		"expiration_time" = -1,
+		"applies_to_admins" = FALSE,
+		"reason" = "SYSTEM BAN - Input date result during age verification was under 18 years of age. Contact administration for verification.",
+		"ckey" = owner.ckey || null,
+		"ip" = owner.address || null,
+		"computerid" = owner.computer_id || null,
+		// Admin banning info
+		"a_ckey" = "SYSTEM (Automated-Age-Gate)",
+		"a_ip" = null,
+		"a_computerid" = "0",
+		"who" = GLOB.clients.Join(", "),
+		"adminwho" = GLOB.admins.Join(", "), //doesnt include stealthmins but whatever
+	))
 	owner.add_system_note("Automated-Age-Gate", "Failed automated age gate process.")
-	if(!query_add_ban.Execute())
+	if(!SSdbcore.MassInsert(format_table_name("ban"), sql_ban, warn = TRUE, special_columns = special_columns))
 		// this is the part where you should panic.
-		qdel(query_add_ban)
 		message_admins("WARNING! Failed to ban [owner.ckey] for failing the automated age gate. (Month: [month] Year: [year])")
 		send2adminchat("WARNING! Failed to ban [owner.ckey] for failing the automated age gate. (Month: [month] Year: [year])")
 		qdel(owner)

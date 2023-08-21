@@ -1,5 +1,5 @@
 ## Automated age verification, comment this out to not ask new users for their DoB
-# AGE_VERIFICATION
+# AUTOMATED_AGE_VERIFICATION
 
 ## Uncomment to make players need to link their discord accounts to ckeys in order to join the game_mode ##
 ## The discord verification system makes use of https://github.com/optimumtact/orangescogs ##
