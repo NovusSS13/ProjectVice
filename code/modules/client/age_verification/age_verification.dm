@@ -35,7 +35,7 @@
 /datum/age_verification/ui_close(mob/user)
 	. = ..()
 	if(owner && kick_unruly_owner)
-		log_admin("[owner.ckey] was kicked for closing the age gate UI without finalizing age verification.")
+		log_admin("[owner.key] was kicked for closing the age gate UI without finalizing age verification.")
 		QDEL_NULL(owner)
 	qdel(src)
 
@@ -51,11 +51,11 @@
 		WHERE ckey = :ckey
 	"}, list("month" = month, "year" = year, "ckey" = owner.ckey))
 	if(query_add_player.Execute())
-		log_admin("[owner.ckey] has successfully passed the age gate. (Month: [month] Year: [year])")
-		send2adminchat("[owner.ckey] has successfully passed the age gate. (Month: [month] Year: [year])")
+		log_admin("[owner.key] has successfully passed the age gate. (Month: [month] Year: [year])")
+		send2adminchat("[owner.key] has successfully passed the age gate. (Month: [month] Year: [year])")
 	else
-		message_admins("WARNING! [owner.ckey] passed the age gate, but the database could not save it properly. (Month: [month] Year: [year])")
-		send2adminchat("WARNING! [owner.ckey] passed the age gate, but the database could not save it properly. (Month: [month] Year: [year])")
+		message_admins("WARNING! [owner.key] passed the age gate, but the database could not save it properly. (Month: [month] Year: [year])")
+		send2adminchat("WARNING! [owner.key] passed the age gate, but the database could not save it properly. (Month: [month] Year: [year])")
 	qdel(query_add_player)
 	owner.update_flag_db(DB_FLAG_AGE_VETTED, TRUE)
 	kick_unruly_owner = FALSE
@@ -120,8 +120,8 @@
 		return
 
 	// announce this
-	message_admins("[owner.ckey] has been banned for failing the automated age gate. (Month: [month] Year: [year])")
-	send2adminchat("[owner.ckey] has been banned for failing the automated age gate. (Month: [month] Year: [year])")
+	message_admins("[owner.key] has been banned for failing the automated age gate. (Month: [month] Year: [year])")
+	send2adminchat("[owner.key] has been banned for failing the automated age gate. (Month: [month] Year: [year])")
 
 	// removing the client disconnects them
 	kick_unruly_owner = FALSE
