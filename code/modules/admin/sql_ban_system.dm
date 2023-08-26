@@ -1132,10 +1132,10 @@
 /proc/create_system_ban(player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, severity, reason, global_ban, list/roles_to_ban) // SKYRAT EDIT CHANGE - MULTISERVER
 	//nuh uh
 	if(IsAdminAdvancedProcCall())
-		return
+		return FALSE
 	if(!SSdbcore.Connect())
 		to_chat(usr, span_danger("Failed to establish database connection."), confidential = TRUE)
-		return
+		return FALSE
 	var/player_ckey = ckey(player_key)
 	if(player_ckey)
 		var/datum/db_query/query_create_ban_get_player = SSdbcore.NewQuery({"
@@ -1170,8 +1170,8 @@
 			admins_online += C
 	var/who = clients_online.Join(", ")
 	var/adminwho = admins_online.Join(", ")
-	var/kn = key_name(usr)
-	var/kna = key_name_admin(usr)
+	var/kn = key_name("SYSTEM")
+	var/kna = key_name_admin("SYSTEM")
 
 	var/special_columns = list(
 		"bantime" = "NOW()",
@@ -1202,7 +1202,7 @@
 			"adminwho" = adminwho
 		))
 	if(!SSdbcore.MassInsert(format_table_name("ban"), sql_ban, warn = TRUE, special_columns = special_columns))
-		return
+		return FALSE
 	var/target = ban_target_string(player_key, player_ip, player_cid)
 	var/msg = "has created a [global_ban ? "global" : "local"] [isnull(duration) ? "permanent" : "temporary [time_message]"] [applies_to_admins ? "admin " : ""][is_server_ban ? "server ban" : "role ban from [roles_to_ban.len] roles"] for [target]." // SKYRAT EDIT CHANGE - MULTISERVER
 	log_admin_private("[kn] [msg][is_server_ban ? "" : " Roles: [roles_to_ban.Join(", ")]"] Reason: [reason]")
@@ -1229,6 +1229,7 @@
 
 	if(is_server_ban && linked_ahelp_ticket)
 		linked_ahelp_ticket.Resolve()
+	return TRUE
 
 #undef MAX_ADMINBANS_PER_ADMIN
 #undef MAX_ADMINBANS_PER_HEADMIN

@@ -113,13 +113,11 @@
 	var/given_reason = "SYSTEM BAN - Input date result during age verification was under 18 years of age. Contact administration for verification."
 	if(!create_system_ban(player_key = owner.key, player_ip = owner.address, player_cid = owner.computer_id, severity = "high", global_ban = TRUE, reason = given_reason, roles_to_ban = list("Server")))
 		// this is the part where you should panic.
-		message_admins("WARNING! Failed to ban [owner.ckey] for failing the automated age gate. (Month: [month] Year: [year])")
-		send2adminchat("WARNING! Failed to ban [owner.ckey] for failing the automated age gate. (Month: [month] Year: [year])")
+		message_admins("WARNING! Failed to ban [owner.key] for failing the automated age gate. (Month: [month] Year: [year])")
+		send2adminchat("WARNING! Failed to ban [owner.key] for failing the automated age gate. (Month: [month] Year: [year])")
 		qdel(owner)
 		qdel(src)
 		return
-
-	create_message("note", owner.ckey, "SYSTEM (Automated-Age-Gate)", given_reason, null, null, 0, 0, null, 0, "high")
 
 	// announce this
 	message_admins("[owner.ckey] has been banned for failing the automated age gate. (Month: [month] Year: [year])")
