@@ -10,3 +10,4 @@
 	SHOULD_NOT_SLEEP(TRUE)
 	var/datum/age_verification/age_vetting = new(src)
 	INVOKE_ASYNC(age_vetting, TYPE_PROC_REF(/datum, ui_interact), src.mob)
+	return age_vetting

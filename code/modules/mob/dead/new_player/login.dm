@@ -2,9 +2,9 @@
 	if(!client)
 		return
 
+	client.set_db_player_flags()
 	if(CONFIG_GET(flag/use_exp_tracking))
-		client?.set_exp_from_db()
-		client?.set_db_player_flags()
+		client.set_exp_from_db()
 		if(!client)
 			// client disconnected during one of the db queries
 			return FALSE
