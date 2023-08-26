@@ -35,6 +35,7 @@
 /datum/age_verification/ui_close(mob/user)
 	. = ..()
 	if(owner && kick_unruly_owner)
+		log_admin("[owner.ckey] was kicked for closing the age gate UI without finalizing age verification.")
 		QDEL_NULL(owner)
 	qdel(src)
 
@@ -50,6 +51,7 @@
 		WHERE ckey = :ckey
 	"}, list("month" = month, "year" = year, "ckey" = owner.ckey))
 	if(query_add_player.Execute())
+		log_admin("[owner.ckey] has successfully passed the age gate. (Month: [month] Year: [year])")
 		send2adminchat("[owner.ckey] has successfully passed the age gate. (Month: [month] Year: [year])")
 	else
 		message_admins("WARNING! [owner.ckey] passed the age gate, but the database could not save it properly. (Month: [month] Year: [year])")
@@ -107,37 +109,9 @@
 	return age_gate_result
 
 /datum/age_verification/proc/minor_detected(month, year)
-	var/special_columns = list(
-		"bantime" = "NOW()",
-		"server_ip" = "INET_ATON(?)",
-		"ip" = "INET_ATON(?)",
-		"a_ip" = "INET_ATON(?)",
-		"expiration_time" = "IF(? IS NULL, NULL, NOW() + INTERVAL ? MINUTE)"
-	)
-	var/list/sql_ban = list(list(
-		// Server info
-		"server_name" = CONFIG_GET(string/serversqlname),// SKYRAT EDIT CHANGE - MULTISERVER
-		"server_ip" = world.internet_address || 0,
-		"server_port" = world.port,
-		"round_id" = GLOB.round_id,
-		// Client ban info
-		"role" = "Server",
-		"global_ban" = TRUE, // SKYRAT EDIT CHANGE - MULTISERVER
-		"expiration_time" = -1,
-		"applies_to_admins" = FALSE,
-		"reason" = "SYSTEM BAN - Input date result during age verification was under 18 years of age. Contact administration for verification.",
-		"ckey" = owner.ckey || null,
-		"ip" = owner.address || null,
-		"computerid" = owner.computer_id || null,
-		// Admin banning info
-		"a_ckey" = "SYSTEM (Automated-Age-Gate)",
-		"a_ip" = null,
-		"a_computerid" = "0",
-		"who" = GLOB.clients.Join(", "),
-		"adminwho" = GLOB.admins.Join(", "), //doesnt include stealthmins but whatever
-	))
 	owner.add_system_note("Automated-Age-Gate", "Failed automated age gate process.")
-	if(!SSdbcore.MassInsert(format_table_name("ban"), sql_ban, warn = TRUE, special_columns = special_columns))
+	var/given_reason = "SYSTEM BAN - Input date result during age verification was under 18 years of age. Contact administration for verification."
+	if(!create_system_ban(player_key = owner.key, player_ip = owner.address, player_cid = owner.computer_id, severity = "high", global_ban = TRUE, reason = given_reason, roles_to_ban = list("Server")))
 		// this is the part where you should panic.
 		message_admins("WARNING! Failed to ban [owner.ckey] for failing the automated age gate. (Month: [month] Year: [year])")
 		send2adminchat("WARNING! Failed to ban [owner.ckey] for failing the automated age gate. (Month: [month] Year: [year])")
@@ -145,7 +119,7 @@
 		qdel(src)
 		return
 
-	create_message("note", owner.ckey, "SYSTEM (Automated-Age-Gate)", "SYSTEM BAN - Input date result during age verification was under 18 years of age. Contact administration for verification.", null, null, 0, 0, null, 0, "high")
+	create_message("note", owner.ckey, "SYSTEM (Automated-Age-Gate)", given_reason, null, null, 0, 0, null, 0, "high")
 
 	// announce this
 	message_admins("[owner.ckey] has been banned for failing the automated age gate. (Month: [month] Year: [year])")
