@@ -111,7 +111,7 @@
 /datum/age_verification/proc/minor_detected(month, year)
 	owner.add_system_note("Automated-Age-Gate", "Failed automated age gate process.")
 	var/given_reason = "SYSTEM BAN - Input date result during age verification was under 18 years of age. Contact administration for verification."
-	if(!create_system_ban(player_key = owner.key, player_ip = owner.address, player_cid = owner.computer_id, severity = "high", global_ban = TRUE, reason = given_reason, roles_to_ban = list("Server")))
+	if(!create_system_ban(player_key = owner.key, player_ip = owner.address, player_cid = owner.computer_id, applies_to_admins = FALSE, severity = "high", global_ban = TRUE, reason = given_reason, roles_to_ban = list("Server")))
 		// this is the part where you should panic.
 		message_admins("WARNING! Failed to ban [owner.key] for failing the automated age gate. (Month: [month] Year: [year])")
 		send2adminchat("WARNING! Failed to ban [owner.key] for failing the automated age gate. (Month: [month] Year: [year])")
