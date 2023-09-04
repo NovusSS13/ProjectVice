@@ -53,8 +53,9 @@
 			stack_trace("A geyscale modify menu was instantiated with a non-atom target and no specified apply callback (DefaultApply won't do).")
 
 	icon_state = starting_icon_state
+	/* FUCK YOU BUBBERS?
 	src.specific_ui_state = specific_ui_state
-
+	*/
 	SetupConfigOwner()
 
 
