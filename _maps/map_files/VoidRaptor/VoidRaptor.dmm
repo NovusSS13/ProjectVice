@@ -988,7 +988,7 @@
 /area/station/engineering/atmos/pumproom)
 "aoB" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/glass{
+/obj/machinery/door/airlock/multi_tile/public/glass{
 	name = "Entertainment Center"
 	},
 /turf/open/floor/iron/large,
@@ -1343,6 +1343,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/machinery/atmospherics/components/unary/delam_scram/directional/east,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
 "atS" = (
@@ -7078,7 +7079,7 @@
 	},
 /area/station/hallway/primary/central/aft)
 "cgl" = (
-/mob/living/basic/giant_spider/hunter/scrawny,
+/mob/living/basic/spider/giant/hunter/scrawny,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/electrical)
 "cgt" = (
@@ -11509,7 +11510,7 @@
 /turf/open/floor/iron/white/diagonal,
 /area/station/science/research)
 "dxr" = (
-/obj/machinery/door/airlock/multi_tile/glass{
+/obj/machinery/door/airlock/multi_tile/public/glass{
 	name = "Arrivals"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -17397,7 +17398,7 @@
 /area/station/engineering/atmos/storage)
 "fbk" = (
 /obj/effect/decal/cleanable/dirt,
-/mob/living/basic/giant_spider/tarantula/scrawny,
+/mob/living/basic/spider/giant/tarantula/scrawny,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/electrical)
 "fbl" = (
@@ -18654,12 +18655,10 @@
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
 "fvn" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
-	},
 /obj/machinery/camera/directional/north{
 	dir = 9
 	},
+/obj/effect/turf_decal/stripes/red/box,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
 "fvr" = (
@@ -19095,6 +19094,10 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/smooth,
 /area/station/cargo/sorting)
+"fCh" = (
+/obj/machinery/button/delam_scram,
+/turf/closed/wall/r_wall,
+/area/station/engineering/supermatter/room)
 "fCo" = (
 /obj/machinery/status_display/ai/directional/north,
 /obj/effect/landmark/start/corrections_officer,
@@ -20184,7 +20187,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/airlock/access/all/security/brig,
+/obj/effect/mapping_helpers/airlock/access/all/security/entrance,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/office)
 "fVz" = (
@@ -21319,7 +21322,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/airlock/access/all/security/brig,
+/obj/effect/mapping_helpers/airlock/access/all/security/entrance,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/office)
 "gkI" = (
@@ -21469,7 +21472,7 @@
 /area/station/maintenance/port/greater)
 "gmL" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/glass{
+/obj/machinery/door/airlock/multi_tile/public/glass{
 	name = "Recreation Area"
 	},
 /obj/structure/disposalpipe/segment,
@@ -25671,7 +25674,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/glass{
+/obj/machinery/door/airlock/multi_tile/public/glass{
 	name = "Medbay"
 	},
 /obj/structure/disposalpipe/segment,
@@ -25745,7 +25748,7 @@
 /obj/machinery/door/airlock/security{
 	name = "Evidence Storage"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/security/brig,
+/obj/effect/mapping_helpers/airlock/access/all/security/general,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/office)
 "hyf" = (
@@ -26937,7 +26940,7 @@
 /area/station/cargo/miningdock)
 "hQx" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/glass{
+/obj/machinery/door/airlock/multi_tile/public/glass{
 	dir = 4;
 	name = "Arrivals"
 	},
@@ -27174,6 +27177,11 @@
 	},
 /turf/open/floor/pod/dark,
 /area/station/service/chapel/office)
+"hTn" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/item/folder/biscuit/confidential/delam,
+/turf/open/floor/plating/airless,
+/area/station/engineering/supermatter/room)
 "hTr" = (
 /obj/effect/turf_decal/trimline/yellow/filled/warning{
 	dir = 10
@@ -29276,7 +29284,7 @@
 /area/station/maintenance/aft/upper)
 "ixm" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/glass{
+/obj/machinery/door/airlock/multi_tile/public/glass{
 	name = "Pool"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -35562,8 +35570,8 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/airlock/access/all/security/brig,
 /obj/effect/mapping_helpers/mail_sorting/security/general,
+/obj/effect/mapping_helpers/airlock/access/all/security/entrance,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/office)
 "kkl" = (
@@ -38759,9 +38767,7 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/engineering/atmos/hfr_room)
 "lcn" = (
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 6
-	},
+/obj/effect/turf_decal/stripes/red/box,
 /turf/open/floor/iron/smooth,
 /area/station/engineering/main)
 "lcr" = (
@@ -39780,9 +39786,6 @@
 /obj/structure/rack,
 /obj/item/gun/energy/e_gun/dragnet,
 /obj/item/gun/energy/e_gun/dragnet,
-/obj/item/melee/breaching_hammer,
-/obj/item/melee/breaching_hammer,
-/obj/item/melee/breaching_hammer,
 /obj/effect/turf_decal/tile/dark_red/half,
 /obj/machinery/camera/directional/south{
 	c_tag = "Armory - Interior"
@@ -43483,7 +43486,6 @@
 	name = "Court Cell"
 	},
 /obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/access/all/security/brig,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
 	cycle_id = "brig-entrance-fore"
 	},
@@ -43493,6 +43495,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+/obj/effect/mapping_helpers/airlock/access/all/security/court,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/office)
 "mqY" = (
@@ -43866,7 +43869,7 @@
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/station/maintenance/solars/port/aft)
 "myv" = (
-/obj/machinery/door/airlock/multi_tile/glass{
+/obj/machinery/door/airlock/multi_tile/public/glass{
 	name = "Cargo Lobby"
 	},
 /obj/machinery/door/firedoor,
@@ -45428,7 +45431,7 @@
 /area/station/hallway/primary/aft)
 "mUU" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/glass{
+/obj/machinery/door/airlock/multi_tile/public/glass{
 	dir = 4;
 	name = "Gun Range"
 	},
@@ -49498,7 +49501,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/airlock/access/all/security/brig,
+/obj/effect/mapping_helpers/airlock/access/all/security/general,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/brig)
 "oaL" = (
@@ -52459,7 +52462,7 @@
 	},
 /area/station/engineering/main)
 "oTc" = (
-/obj/machinery/door/airlock/multi_tile/glass{
+/obj/machinery/door/airlock/multi_tile/public/glass{
 	dir = 4;
 	name = "Cargo Lobby"
 	},
@@ -52690,7 +52693,7 @@
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/port/aft)
 "oVP" = (
-/obj/machinery/door/airlock/multi_tile/glass{
+/obj/machinery/door/airlock/multi_tile/public/glass{
 	name = "Recreation Area"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -53226,7 +53229,7 @@
 /area/station/commons/dorms)
 "pcK" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/glass{
+/obj/machinery/door/airlock/multi_tile/public/glass{
 	dir = 4;
 	name = "Entertainment Center"
 	},
@@ -55992,7 +55995,7 @@
 	},
 /area/station/medical/virology)
 "pRr" = (
-/mob/living/basic/giant_spider/hunter/scrawny,
+/mob/living/basic/spider/giant/hunter/scrawny,
 /obj/machinery/light/small/directional/south,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/status_display/ai/directional/south,
@@ -56127,7 +56130,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/airlock/multi_tile/glass{
+/obj/machinery/door/airlock/multi_tile/public/glass{
 	dir = 4;
 	name = "Library"
 	},
@@ -56947,7 +56950,7 @@
 "qbl" = (
 /obj/effect/turf_decal/siding/thinplating,
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/glass{
+/obj/machinery/door/airlock/multi_tile/public/glass{
 	dir = 4;
 	name = "Arrivals"
 	},
@@ -62917,7 +62920,7 @@
 /turf/open/floor/iron/freezer,
 /area/station/medical/chemistry)
 "rLK" = (
-/obj/machinery/door/airlock/multi_tile/glass{
+/obj/machinery/door/airlock/multi_tile/public/glass{
 	name = "Recreation Area"
 	},
 /obj/machinery/door/firedoor,
@@ -68579,7 +68582,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/airlock/access/all/security/brig,
+/obj/effect/mapping_helpers/airlock/access/all/security/entrance,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/office)
 "tnl" = (
@@ -71113,7 +71116,7 @@
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/station/maintenance/department/electrical)
 "tWY" = (
-/obj/machinery/door/airlock/multi_tile/glass{
+/obj/machinery/door/airlock/multi_tile/public/glass{
 	name = "Primary Tool Storage"
 	},
 /obj/machinery/door/firedoor,
@@ -76076,9 +76079,11 @@
 /area/station/ai_monitored/turret_protected/aisat/service)
 "vqa" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
-/obj/effect/turf_decal/stripes/line,
-/obj/machinery/firealarm/directional/south,
 /obj/structure/cable,
+/obj/machinery/firealarm/directional/south{
+	pixel_y = -32
+	},
+/obj/effect/turf_decal/stripes/line,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
 "vqt" = (
@@ -78727,7 +78732,7 @@
 /area/station/hallway/primary/fore)
 "wbx" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/glass{
+/obj/machinery/door/airlock/multi_tile/public/glass{
 	dir = 4;
 	name = "Arrivals"
 	},
@@ -79366,7 +79371,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/airlock/access/all/security/brig,
+/obj/effect/mapping_helpers/airlock/access/all/security/general,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/brig)
 "wlV" = (
@@ -81864,7 +81869,7 @@
 /area/station/ai_monitored/command/storage/eva)
 "wUC" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/multi_tile/glass{
+/obj/machinery/door/airlock/multi_tile/public/glass{
 	dir = 4;
 	name = "Game Room"
 	},
@@ -84433,7 +84438,7 @@
 /area/station/hallway/primary/central)
 "xKx" = (
 /obj/effect/decal/cleanable/dirt,
-/mob/living/basic/giant_spider/hunter/scrawny,
+/mob/living/basic/spider/giant/hunter/scrawny,
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/electrical)
@@ -121110,7 +121115,7 @@ xMx
 iPJ
 mTO
 hYs
-hLh
+hTn
 cju
 tUK
 orq
@@ -121367,7 +121372,7 @@ bOD
 leI
 jvd
 lcn
-oCl
+fCh
 fvn
 oiv
 oiv

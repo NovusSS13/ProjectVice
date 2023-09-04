@@ -129,7 +129,8 @@
 	name = "Space Bartender"
 	id = /obj/item/card/id/advanced
 	id_trim = /datum/id_trim/space_bartender
-	uniform = /obj/item/clothing/under/rank/civilian/bartender
+	neck = /obj/item/clothing/neck/bowtie
+	uniform = /obj/item/clothing/under/costume/buttondown/slacks/service
 	suit = /obj/item/clothing/suit/armor/vest
 	back = /obj/item/storage/backpack
 	glasses = /obj/item/clothing/glasses/sunglasses/reagent
@@ -318,7 +319,7 @@
 	ears = /obj/item/radio/headset/syndicate/alt
 	shoes = /obj/item/clothing/shoes/combat
 	r_pocket = /obj/item/gun/ballistic/automatic/pistol
-	r_hand = /obj/item/gun/ballistic/rifle/sniper_rifle
+	// r_hand = /obj/item/gun/ballistic/rifle/sniper_rifle //Bubberstation Edit
 
 	implants = list(/obj/item/implant/weapons_auth)
 	id_trim = /datum/id_trim/syndicom/skyrat/interdyne //SKYRAT EDIT

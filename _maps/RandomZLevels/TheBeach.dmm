@@ -136,6 +136,10 @@
 /obj/structure/flora/tree/palm,
 /turf/open/misc/beach/sand,
 /area/awaymission/beach)
+"aB" = (
+/mob/living/basic/crab/kreb,
+/turf/open/misc/beach/sand,
+/area/awaymission/beach)
 "aC" = (
 /obj/item/flashlight/flare/torch,
 /turf/open/misc/beach/sand,
@@ -171,6 +175,10 @@
 	pixel_y = 1
 	},
 /turf/open/water/beach,
+/area/awaymission/beach)
+"aK" = (
+/mob/living/basic/crab,
+/turf/open/misc/beach/sand,
 /area/awaymission/beach)
 "aO" = (
 /obj/effect/baseturf_helper/beach/sand,
@@ -10704,7 +10712,7 @@ av
 av
 ag
 aA
-mZ
+aB
 ak
 ak
 ak

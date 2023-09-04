@@ -213,10 +213,6 @@
 	dir = 8
 	},
 /area/centcom/basketball)
-"yY" = (
-/mob/living/basic/crab,
-/turf/open/misc/beach/sand,
-/area/centcom/basketball)
 "zk" = (
 /turf/open/misc/beach/coast/corner{
 	dir = 1
@@ -280,6 +276,10 @@
 /area/centcom/basketball)
 "Di" = (
 /obj/item/clothing/neck/necklace/dope,
+/turf/open/misc/beach/sand,
+/area/centcom/basketball)
+"Dp" = (
+/mob/living/basic/crab/kreb,
 /turf/open/misc/beach/sand,
 /area/centcom/basketball)
 "Dt" = (
@@ -396,6 +396,10 @@
 /turf/open/misc/beach/coast{
 	dir = 6
 	},
+/area/centcom/basketball)
+"NI" = (
+/mob/living/basic/crab,
+/turf/open/misc/beach/sand,
 /area/centcom/basketball)
 "NX" = (
 /obj/effect/turf_decal/sand,
@@ -858,7 +862,7 @@ un
 IM
 iB
 Jb
-Fy
+Dp
 IM
 BM
 Hu
@@ -990,7 +994,7 @@ ao
 ao
 lD
 IM
-yY
+NI
 IM
 IM
 Xq
